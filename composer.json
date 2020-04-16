@@ -1,0 +1,23 @@
+{
+  "name": "sivin/role-panel",
+  "type": "library",
+  "description": "RolePanel is extension for Nette Framework which change user roles in development mode, where it appears in the debugger bar.",
+  "keywords": ["framework", "debugging", "role", "role panel", "rolepanel", "mailing", "permission", "authorization"],
+  "license": ["BSD-3-Clause"],
+  "authors": [
+	{
+	  "name": "Milan Sivák",
+	  "homepage": "http://milansivak.cz"
+	}
+  ],
+  "require": {
+	"php": ">=5.6",
+	"nette/di": "^2.4",
+	"nette/application": "^2.4",
+	"nette/security": "^2.4",
+	"tracy/tracy": "^2.4"
+  },
+  "autoload": {
+	"psr-4": { "SiViN\\RolePanel\\": "src/" }
+  }
+}

@@ -1,0 +1,40 @@
+<style class="tracy-debug">
+	#tracy-debug .rp-btn {
+		background-color: #008C2B;
+		padding: 5px;
+		color: white;
+		margin-top: 3px;
+	}
+	#tracy-debug .rp-form {
+		display: inline-block;
+	}
+</style>
+
+<h1>🔧 Set roles</h1>
+<div class="tracy-inner">
+	<div class="tracy-inner-container">
+		<?php if ($user->isLoggedIn() === true) { ?>
+		<form class="rp-form" action="<?php echo $this->fastLink('-form', 1); ?>">
+			<?php
+				foreach ($permission->getRoles() as $role):
+			?>
+				<input type="checkbox" <?php if ($user->isInRole((string)$role)) { ?>checked="checked"<?php } ?> name="<?php echo $prefix; ?>-roles[]" value="<?php echo $role; ?>"> <?php if (array_key_exists($role, $roleNames)) { echo $roleNames[$role]; } else { echo $role; } ?><br>
+			<?php
+				endforeach
+			?>
+			<?php
+				foreach ($request->getUrl()->getQueryParameters() as $paramName => $paramValue):
+			?>
+					<input type="hidden" name="<?php echo $paramName; ?>" value="<?php echo $paramValue; ?>">
+			<?php
+				endforeach
+			?>
+			<input type="hidden" name="<?php echo $prefix; ?>-form" value="1">
+			<input class="rp-btn" type="submit" value="SET">
+		</form>
+			<a href="<?php echo $this->fastLink('-logout', 1); ?>">Logout</a>
+		<?php } else { ?>
+			<h2>User must be logged in</h2>
+		<?php } ?>
+	</div>
+</div>
