@@ -62,7 +62,7 @@ class RolePanelTracy implements IBarPanel
 		$query[self::PREFIX . '-roles'] = null;
 		$query[self::PREFIX . '-form'] = null;
 		$query[self::PREFIX . '-logout'] = null;
-		header('Location: ' . $this->url->setQuery($query));
+		header('Location: ' . $this->url->withQuery($query));
 		exit(1);
 	}
 
@@ -76,7 +76,7 @@ class RolePanelTracy implements IBarPanel
 		$url = clone $this->url;
 		$query = $url->getQueryParameters();
 		$query[self::PREFIX . $param] = $val;
-		return (string) $url->setQuery($query);
+		return (string) $url->withQuery($query);
 	}
 
 	/**
